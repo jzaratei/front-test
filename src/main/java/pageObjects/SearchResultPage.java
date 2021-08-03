@@ -1,5 +1,6 @@
 package pageObjects;
 
+import common.Managers.ScenarioManager;
 import common.exceptions.ExceptionController;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 import static common.selenium.Driver.browser;
+import static common.selenium.extensions.WebDriverExtensions.getScreenshot;
 import static common.selenium.extensions.WebElementExtensions.*;
 
 public class SearchResultPage extends CommonPage {
@@ -43,6 +45,7 @@ public class SearchResultPage extends CommonPage {
     public boolean isHotelFound(){
         try {
             if (isElementVisible(lblNoHotelFound, 5)) {
+                getScreenshot(ScenarioManager.getScenario());
                 browser().navigate().refresh();
                 Thread.sleep(5000);
             }
