@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="pattern">%d %p [%t] %C{1.} %m%n</Property>
+    </Properties>
+    <Filter type="ThresholdFilter" level="trace"/>
+    <Appenders>
+        <Routing name="Routing">
+            <Routes pattern="$${thread:threadName}">
+                <Route>
+                    <RollingFile name="logFile-${thread:threadName}"
+                                 fileName="logs/tasks.log" filePattern="logs/tasks-%d{yyyy-MM-dd}.log">
+                        <PatternLayout>
+                            <pattern>${pattern}</pattern>
+                        </PatternLayout>
+                        <Policies>
+                            <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+                        </Policies>
+                    </RollingFile>
+                </Route>
+            </Routes>
+        </Routing>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %c{1} -%msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=white, DEBUG=green bold, TRACE=blue}" disableAnsi="false"/>
+            <Filters>
+                <MarkerFilter marker="FLOW" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <MarkerFilter marker="EXCEPTION" onMatch="DENY" onMismatch="ACCEPT"/>
+            </Filters>
+        </Console>
+        <!--<File name="File" fileName="${filename}">
+            <PatternLayout>
+                <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>-->
+    </Appenders>
+    <Loggers>
+        <Logger name="org.apache.logging.log4j.test1" level="debug" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Logger name="qa.carrefour.app.utils.*" level="debug">
+            <AppenderRef ref="Routing" />
+        </Logger>
+        <Logger name="org.mongodb.driver" level="ERROR"/>
+        <Logger name="httpclient.wire.header" level="WARN"/>
+        <Logger name="httpclient.wire.content" level="WARN"/>
+        <Logger name="org.apache.http" level="WARN"/>
+        <Logger name="org.apache.http.headers" level="WARN"/>
+        <Logger name="org.apache.http.wire" level="ERROR"/>
+        <Root level="debug" additivity="false">
+            <AppenderRef ref="STDOUT" />
+            <AppenderRef ref="Routing" />
+        </Root>
+    </Loggers>
+</Configuration>
