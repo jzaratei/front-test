@@ -15,7 +15,7 @@ public class CommonSteps  extends Page implements En {
             URL url = new URL(PropertiesManager.getInstance().getProperty(web));
             instanceOf(CommonPage.class).navigateToUrl(url);
             instanceOf(CommonPage.class).checkAndClickCookies();
-
+            instanceOf(CommonPage.class).checkAndCloseSubscribe();
         });
     }
 }

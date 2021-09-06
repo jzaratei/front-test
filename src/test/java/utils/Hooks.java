@@ -1,7 +1,6 @@
 package utils;
 
 import common.Managers.PlatformManager;
-import common.Managers.PropertiesManager;
 import common.Managers.ScenarioManager;
 import common.exceptions.ExceptionController;
 import common.selenium.DriverController;

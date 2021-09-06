@@ -1,5 +1,5 @@
 # stay.tui.com automation-test
-QA technical automation test for stay.tui.com
+QA technical automation test
 # pre
 JAVA 11+ and maven are needed to build the project. 
 # simple usage
@@ -15,16 +15,10 @@ As a result an index.html cucumber report will be generated, located at target/g
 # specify scenarios
 If a single scenario is needed to be tested, modify the "tag" value in the runnerTest file located at src/test/java/runner.
 Example:
-tags = "@reception"
+tags = "@search"
 
 # available features
 
-| Feature | Tag |
-| :---: | :---: |
-| Reception | @reception |
-| search - recommended | @hotel |
-| search | @destination |
-| search actions - Order by price | @price |
-| search actions - Order by rating | @rating |
-| search actions - Order by stars | @stars |
-| Booking | @booking |
+| Feature | Tag | Description
+| :---: | :---: |:---: |
+| Search | @search |Search for a given topic and select the n post

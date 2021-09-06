@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tui</groupId>
-    <artifactId>tui-test</artifactId>
+    <groupId>com.test</groupId>
+    <artifactId>front-test</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -119,7 +119,7 @@
                     <expandBeforeAfterHooks>true</expandBeforeAfterHooks>
                     <customParameters>
                         <Project>${project.artifactId}</Project>
-                        <Url>https://aircall.io/es/</Url>
+                        <Url>https://test.es/</Url>
                         <Description>${project.description}</Description>
                     </customParameters>
                 </configuration>
