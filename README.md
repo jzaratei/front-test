@@ -1,4 +1,4 @@
-#automation-test
+# automation-test
 QA technical automation test
 # pre
 JAVA 11+ and maven are needed to build the project. 
